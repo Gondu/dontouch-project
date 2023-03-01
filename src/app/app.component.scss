@@ -1,5 +1,139 @@
-.test {
-    width: 500px;
-    height: 500px;
-    background-color: red;
+.main-area {
+	margin: 30px 50px;
+	padding: 20px 20px;
+
+	.content-area {
+		padding: 20px 20px;
+		background-color: #ECF0F1;
+
+		.header {
+			text-align: center;
+			color: #21618C;
+			padding: 0px 20px;
+
+			hr {
+				margin-top: 20px;
+				margin-bottom: 20px;
+				color: #ECF0F1;
+			}
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+
+			h3 {
+				color: #21618C;
+				margin: 10px 0px;
+			}
+
+			.form-area {
+				// width: 50%;
+				width: 100%;
+				padding: 10px 15px;
+				display: flex;
+    		flex-direction: column;
+
+				&-ctn {
+					display: flex;
+					align-items: flex-start;
+					justify-content: space-between;
+
+					.invalid-form {
+						color: red;
+					}
+
+					.date_time {
+						height: 40px;
+						margin-top: 8px;
+						border: 1px solid lightgrey;
+					}
+
+					input[type=text] {
+						width: 100%;
+						padding: 12px 20px;
+						margin: 8px 0;
+						display: inline-block;
+						border: 1px solid #ccc;
+						border-radius: 4px;
+						box-sizing: border-box;
+					}
+				}
+
+				input[type=submit] {
+					width: 15%;
+					background-color: #48C9B0;
+					color: white;
+					padding: 14px 20px;
+					margin: 8px 0;
+					margin-left: 3px;
+					border: none;
+					border-radius: 4px;
+					cursor: pointer;
+
+					&:hover {
+						background-color: #1ABC9C;
+					}
+				}
+			}
+
+			.match-display-area {
+				width: 100%;
+				padding: 10px 15px;
+
+				#matches {
+					font-family: Arial, Helvetica, sans-serif;
+					border-collapse: collapse;
+					width: 100%;
+
+					tr {
+						&:nth-child(even) {
+							background-color: #f2f2f2;
+						}
+
+						&:hover {
+							background-color: #ddd;
+						}
+
+						th {
+							padding: 4px;
+							padding-top: 5px;
+							padding-bottom: 5px;
+							text-align: left;
+							background-color: #222;
+							color: white;
+						}
+
+						td {
+							padding: 4px;
+
+							.vs_match {
+								color: red;
+							}
+
+							.btn-delete {
+								width: 70%;
+								background-color: #FB5027;
+								color: white;
+
+								&:hover {
+									background-color: #803d2d;
+									cursor: pointer;
+								}
+							}
+						}
+					}
+				}
+
+				button {
+					border: none;
+					padding: 8px 15px;
+					margin: 0px 5px;
+				}
+
+			}
+		}
+	}
 }

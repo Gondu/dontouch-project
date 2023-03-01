@@ -1,1 +1,101 @@
-<div class="test">Test</div>
+<div class="main-area">
+  <div class="content-area">
+    <div class="header">
+      <h1>Matches</h1>
+      <hr>
+    </div>
+    <div class="container">
+      <!--Add match form-->
+      <div class="form-area">
+        <h3>Add a match</h3>
+        <!-- By clicking on the submit button the ngSubmit function will be called to which we pass the ngForm object-->
+        <form #matchesForm="ngForm" (ngSubmit)="onMatchCreate(matchesForm.value)">
+          <div class="form-area-ctn">
+            <div>
+              <label>Team 1: </label>
+              <input type="text" name="team1" ngModel required #team1="ngModel">
+              <div class="invalid-form" *ngIf="team1.invalid && (team1.dirty || team1.touched)">
+                <div *ngIf="team1.errors?.['required']">Team 1 is required.</div>
+              </div>
+            </div>
+        
+            <div>
+              <label>Team 2: </label>
+              <input type="text" name="team2" ngModel required #team2="ngModel">
+              <div class="invalid-form" *ngIf="team2.invalid && (team2.dirty || team2.touched)">
+                <div *ngIf="team2.errors?.['required']">Team 2 is required.</div>
+              </div>
+            </div>
+        
+            <div>
+              <label>Date: </label>
+              <input class="date_time" type="text" name="date" ngModel required #date="ngModel" type="date">
+              <div class="invalid-form" *ngIf="date.invalid && (date.dirty || date.touched)">
+                <div *ngIf="date.errors?.['required']">Date is required.</div>
+              </div>
+            </div>
+
+            <div>
+              <label>Time: </label>
+              <input class="date_time" type="text" name="time" ngModel required #time="ngModel" type="time">
+              <div class="invalid-form" *ngIf="time.invalid && (time.dirty || time.touched)">
+                <div *ngIf="time.errors?.['required']">Time is required.</div>
+              </div>
+            </div>
+
+            <div>
+              <label>Scored goals Team 1: </label>
+              <input type="text" name="goalsteam1" ngModel required #goalsteam1="ngModel" pattern="[0-9]*">
+              <div class="invalid-form" *ngIf="goalsteam1.invalid && (goalsteam1.dirty || goalsteam1.touched)">
+                <div *ngIf="goalsteam1.errors?.['required']">Scored goals required.</div>
+              </div>
+              <div class="invalid-form" *ngIf="goalsteam1.errors?.['pattern']">
+                Please enter only numbers.
+              </div>
+            </div>
+
+            <div>
+              <label>Scored goals Team 2: </label>
+              <input type="text" name="goalsteam2" ngModel required #goalsteam2="ngModel" pattern="[0-9]*">
+              <div class="invalid-form" *ngIf="goalsteam2.invalid && (goalsteam2.dirty || goalsteam2.touched)">
+                <div *ngIf="goalsteam2.errors?.['required']">Scored goals required.</div>
+              </div>
+              <div class="invalid-form" *ngIf="goalsteam2.errors?.['pattern']">
+                Please enter only numbers.
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <input type="submit" value="Add Match">
+          </div>
+        </form>
+      </div>
+
+      <!--Display match area-->
+      <div class="match-display-area">
+        <h3>All matches</h3>
+        <table id="matches">
+          <tr>
+            <th>Id</th>
+            <th>Match Teams</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Action</th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let match of totalMatches">
+            <td>{{match.id}}</td>
+            <td>{{match.teams.home.name}} <span class="vs_match">vs</span> {{match.teams.away.name}}</td>
+            <td>{{match.time.date}}</td>
+            <td>{{match.time.time}}</td>
+            <td>{{match.result.home}} - {{match.result.away}}</td>
+            <td><button class="btn-delete" (click)="onMatchDelete(match.id)">Delete</button></td>
+          </tr>
+        </table>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
